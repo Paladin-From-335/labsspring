@@ -2,19 +2,37 @@ package com.github.hotel.entity;
 
 import com.github.hotel.payload.RoomCategory;
 import com.github.hotel.payload.RoomStatus;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "rooms")
+@Data
+@NoArgsConstructor
 public class Room {
 
+    @Id
+    @Column(columnDefinition = "BIGINT", nullable = false, name = "id")
     private long id;
 
+    @Column(columnDefinition = "BIGINT", nullable = false, name = "roomNumber")
     private long roomNumber;
 
+    @Column(columnDefinition = "BIGINT", nullable = false, name = "guestsNumber")
     private long guestsNumber;
 
+    @Column(columnDefinition = "VARCHAR", nullable = false, name = "category")
     private RoomCategory category;
 
+    @Column(columnDefinition = "VARCHAR", nullable = false, name = "status")
     private RoomStatus status;
 
+    @Column(columnDefinition = "DECIMAL", nullable = false, name = "status")
     private double price;
 
     public Room(long roomNumber, long guestsNumber, RoomCategory category, RoomStatus status, double price) {
@@ -25,51 +43,4 @@ public class Room {
         this.price = price;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getRoomNumber() {
-        return roomNumber;
-    }
-
-    public void setRoomNumber(long roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
-    public long getGuestsNumber() {
-        return guestsNumber;
-    }
-
-    public void setGuestsNumber(long guestsNumber) {
-        this.guestsNumber = guestsNumber;
-    }
-
-    public RoomCategory getCategory() {
-        return category;
-    }
-
-    public void setCategory(RoomCategory category) {
-        this.category = category;
-    }
-
-    public RoomStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(RoomStatus status) {
-        this.status = status;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 }

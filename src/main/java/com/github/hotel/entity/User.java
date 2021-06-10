@@ -1,19 +1,36 @@
 package com.github.hotel.entity;
 
 import com.github.hotel.payload.UserRole;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "users")
+@NoArgsConstructor
+@Data // data includes getters, setters, toString, equals and hashcode
 public class User {
-
+    @Id
+    @Column(columnDefinition = "BIGINT", nullable = false, name = "id")
     private long id;
 
+    @Column(columnDefinition = "VARCHAR", nullable = false, name = "phone")
     private String phone;
 
+    @Column(columnDefinition = "VARCHAR", nullable = false, name = "password")
     private String password;
 
+    @Column(columnDefinition = "VARCHAR", nullable = false, name = "firstname")
     private String firstname;
 
+    @Column(columnDefinition = "VARCHAR", nullable = false, name = "lastname")
     private String lastname;
 
+    @Column(columnDefinition = "VARCHAR", nullable = false, name = "role")
     private UserRole role;
 
     public User(String phone, String password, String firstname, String lastname, UserRole role) {
@@ -21,54 +38,6 @@ public class User {
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.role = role;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
         this.role = role;
     }
 }
